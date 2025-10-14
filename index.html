@@ -815,43 +815,86 @@ section, header {
 <body>
     <div class="max-w-screen-2xl mx-auto">
         <!-- Header -->
-        <header class="header">
-            <div class="top-bar">
-                <div class="container">
-                    <div class="contact-info">
-                        <span><i class="fas fa-phone"></i> 18001237099</span>
-                        <span><i class="fas fa-envelope"></i> info@gmu.ac.in</span>
-                    </div>
-                    
-                    <div class="university-brand">
-                        <!-- Placeholder for logo, replace URL later -->
-                        <img src="static/images/college logo.jpg" onerror="this.onerror=null; this.src='https://placehold.co/40x40/00458B/ffffff?text=GMU'" alt="GM University Logo" class="logo">
-                       <!-- <div class="brand-text">
-                            <h1>GM UNIVERSITY</h1>
-                            <p>Innovating Minds</p>
-                        </div> -->
-                        
-                        <div class="flex flex-col space-y-1">
-                            <!-- Highlighted Department Title -->
-                            <h1 class="text-2xl sm:text-3xl font-extrabold leading-tight" style="color:#eee;">
-                                
-                            </h1>
-                            <!-- Highlighted Faculty Title -->
-                            <h1 text-align="center" class="text-lg sm:text-xl font-semibold text-white-600 leading-tight">
-                                G M SCHOOL OF LAW
-                            </h1>
-                            <h1 text-align="center" class="text-lg sm:text-xl font-semibold text-white-600 leading-tight">
-                              Recognized by Bar Council of India
-                            </h1>
-                        </div>
-                    </div>
+        <header class="header" style="font-family: 'Poppins', sans-serif; padding: 10px 0;">
+  <div class="top-bar" style="width: 100%;">
 
-                    <div class="kcet-codes">
-                      
-                    </div>
-                </div>
-            </div>
-        </header>
+    <div class="container" style="max-width: 1900px; margin: 0 auto;">
+
+      <!-- Contact Info -->
+      <div class="contact-info" style="display: flex; justify-content: center; align-items: center; gap: 30px; color: #ffcc00; font-size: 15px; margin-bottom: 10px;">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-phone"></i> +91-9886643082
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-envelope"></i> hod.ce@gmu.ac.in
+        </span>
+      </div>
+
+     
+
+        <!-- Left: Logo -->
+        <div style="flex: 1; display: flex; justify-content: flex-start; align-items: right;">
+          <img 
+            src="static/images/college logo.jpg" 
+            onerror="this.onerror=null; this.src='https://placehold.co/85x85/00458B/ffffff?text=GMU'" 
+            alt="GM University Logo"
+            style="width: 85px; height: 85px; border-radius: 50%; object-fit: cover; margin-left: 40px;"
+          >
+        </div>
+
+        <!-- Center: Department Titles -->
+         <div style="flex: 2; text-align: center; line-height: 1.3; margin-left: -80px;">
+  <h1 style="color:#eee; font-size: 38px; font-weight: 800; margin: 0; white-space: nowrap;">
+    G M School of Law
+  </h1>
+  <h2 style="color:#fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0;">
+    Recognised by Bar Council of India (BCI)
+  </h2>
+</div>
+
+
+        <!-- Right: KCET Code -->
+        <div style="flex: 1; text-align: right; padding-right: 40px;">
+          <a href="https://gmu.ac.in/contact" target="_blank"
+   style="display: inline-block; background-color: #FFD700; color: #000; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">
+  Admissions open for 2025-26
+</a>
+
+        </div>
+      </div>
+
+      <!-- Blinking Animation -->
+      <style>
+        @keyframes blink {
+          0%, 50%, 100% { opacity: 1; }
+          25%, 75% { opacity: 0; }
+        }
+
+        /* Responsive tweak for smaller screens */
+        @media (max-width: 900px) {
+          .university-brand {
+            flex-direction: column;
+            text-align: center;
+          }
+          .university-brand div {
+            flex: none;
+            padding: 5px 0;
+          }
+          .university-brand img {
+            margin: 10px auto;
+          }
+          .university-brand h1 {
+            font-size: 32px;
+          }
+          .university-brand h2 {
+            font-size: 20px;
+          }
+        }
+      </style>
+
+    </div>
+  </div>
+</header>
 
         <!-- News Line -->
         <div class="news-line">
@@ -1294,7 +1337,7 @@ section, header {
 </section>
 
 
-    <!-- Programs Offered - GM School of Law -->
+ <!-- Programs Offered - GM School of Law -->
 <section id="programs" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
   <!-- Subtle Background Watermark -->
   <div class="absolute inset-0 bg-[url('static/images/justice-bg.png')] bg-center bg-contain opacity-10"></div>
@@ -1308,41 +1351,45 @@ section, header {
     <div class="grid md:grid-cols-3 gap-10">
       
       <!-- Program 1: LL.B. -->
-      <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-blue-700 hover:shadow-yellow-500/40 transition duration-300">
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CProgram%20Curriculum%20-GMU%20-LLB.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-blue-700 hover:shadow-yellow-500/40 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
         <div class="text-5xl mb-4 text-blue-700"><i class="fas fa-gavel"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">LL.B. (Bachelor of Legislative Laws)</h3>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">LL.B. (Bachelor of Laws)</h3>
         <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-blue-700 font-semibold">3 Years</span></p>
         <p class="text-gray-700 leading-relaxed">
           A 3-year program for graduates from any discipline such as <strong>B.A., B.Sc., B.Com., B.B.A., B.E.,</strong> or equivalent.
           The program focuses on core legal principles, case analysis, advocacy, and professional ethics.
         </p>
-      </div>
+      </a>
 
       <!-- Program 2: B.B.A., LL.B. -->
-      <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-yellow-500 hover:shadow-blue-500/30 transition duration-300">
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CBBALLB25_26.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-yellow-500 hover:shadow-blue-500/30 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
         <div class="text-5xl mb-4 text-yellow-500"><i class="fas fa-balance-scale"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.B.A., LL.B. (Integrated)</h3>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.B.A., LL.B.</h3>
         <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-yellow-600 font-semibold">5 Years</span></p>
         <p class="text-gray-700 leading-relaxed">
           A 5-year integrated program for students who have completed <strong>PUC (10+2)</strong> in any stream.
           Combines legal studies with business administration to prepare graduates for corporate and legal management roles.
         </p>
-      </div>
+      </a>
 
       <!-- Program 3: B.Com., LL.B. -->
-      <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-indigo-700 hover:shadow-yellow-500/30 transition duration-300">
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CProgram%20Curriculum%20-GMU%20-BCom-LLB.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-indigo-700 hover:shadow-yellow-500/30 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
         <div class="text-5xl mb-4 text-indigo-700"><i class="fas fa-scale-balanced"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.Com., LL.B. (Integrated)</h3>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.Com., LL.B.</h3>
         <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-indigo-700 font-semibold">5 Years</span></p>
         <p class="text-gray-700 leading-relaxed">
           A 5-year integrated course for students who have completed <strong>PUC (10+2)</strong> in any stream.
           Offers a blend of commerce and law subjects, ideal for careers in corporate law, taxation, and financial regulations.
         </p>
-      </div>
+      </a>
 
     </div>
   </div>
 </section>
+
 
 
           
@@ -1361,7 +1408,7 @@ section, header {
       <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-blue-700 hover:shadow-xl transition duration-300">
         <img src="static/images/faculty/faculty1.jpg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/1e40af/ffffff?text=SP';" alt="Mr. Shivakumargouda Patil" class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-blue-700 object-cover">
         <h3 class="text-xl font-bold text-gray-900">Mr. Shivakumargouda Patil</h3>
-        <p class="text-blue-700 font-semibold text-sm mb-1">Director & Assistant Professor</p>
+        <p class="text-blue-700 font-semibold text-sm mb-1">Director</p>
         <p class="text-gray-600 text-sm mb-4">GM School of Law, GM University, Davanagere</p>
         <a href="static/pdf/faculty1.pdf" target="_blank" class="inline-block bg-blue-700 text-white py-2 px-5 rounded-lg hover:bg-blue-800 transition duration-300 shadow-md">
           📥 View Profile
@@ -1371,8 +1418,8 @@ section, header {
       <!-- Faculty 2 -->
       <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-yellow-500 hover:shadow-xl transition duration-300">
         <img src="static/images/faculty/" onerror="this.onerror=null; this.src='https://placehold.co/150x150/fbbf24/ffffff?text=LV';" alt="Mrs. Lohitha V" class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-yellow-500 object-cover">
-        <h3 class="text-xl font-bold text-gray-900">Mrs. Lohitha V</h3>
-        <p class="text-yellow-600 font-semibold text-sm mb-1">Assistant Professor</p>
+        <h3 class="text-xl font-bold text-gray-900">Ms. Lohitha V</h3>
+        <p class="text-yellow-600 font-semibold text-sm mb-1"></p>
         <p class="text-gray-600 text-sm mb-4">Practicing Advocate with 25+ years of legal experience</p>
         <a href="static/pdf/faculty2.pdf" target="_blank" class="inline-block bg-yellow-500 text-white py-2 px-5 rounded-lg hover:bg-yellow-600 transition duration-300 shadow-md">
           📥 View Profile
@@ -1383,7 +1430,7 @@ section, header {
       <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-indigo-700 hover:shadow-xl transition duration-300">
         <img src="static/images/faculty/faculty3.jpg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/4338ca/ffffff?text=DS';" alt="Mr. D. S. Sagar" class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-indigo-700 object-cover">
         <h3 class="text-xl font-bold text-gray-900">Mr. D. S. Sagar</h3>
-        <p class="text-indigo-700 font-semibold text-sm mb-1">Assistant Professor</p>
+        <p class="text-indigo-700 font-semibold text-sm mb-1"></p>
         <p class="text-gray-600 text-sm mb-4">Dedicated educator and researcher in legal studies</p>
         <a href="static/pdf/faculty3.pdf" target="_blank" class="inline-block bg-indigo-700 text-white py-2 px-5 rounded-lg hover:bg-indigo-800 transition duration-300 shadow-md">
           📥 View Profile
@@ -1601,15 +1648,15 @@ section, header {
     <!-- Coordinator Card -->
     <div class="max-w-2xl mx-auto mb-12 bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-8 flex flex-col sm:flex-row items-center justify-center text-center sm:text-left hover:shadow-2xl transition-all duration-500">
       <img 
-        src="static/images/faculty/faculty1.jpg" 
+        src="static/images/faculty/faculty2.jpg" 
         onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e3a8a/ffffff?text=SP';" 
         alt="IQAC Coordinator"
         class="w-28 h-28 rounded-full border-4 border-yellow-500 object-cover mb-4 sm:mb-0 sm:mr-6">
       <div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-1">Mr. Shivakumargouda Patil</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-1">Ms. Lohitha V</h3>
         <p class="text-yellow-700 font-semibold mb-1">IQAC Coordinator</p>
         <p class="text-gray-600 text-sm">
-          Director, School of Law  |  GM University, Davanagere
+          
         </p>
       </div>
     </div>
@@ -1738,12 +1785,15 @@ section, header {
     <div class="mb-16">
       <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Research Focus Areas</h3>
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card 1: Constitutional Law -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-800 hover:shadow-xl transition duration-300">
-          <i class="fas fa-gavel text-4xl text-blue-800 mb-4"></i>
-          <h4 class="text-xl font-bold text-gray-900 mb-2">Constitutional & Administrative Law</h4>
-          <p class="text-gray-600 text-sm">Exploring judicial review, constitutional governance, and federalism in a democratic framework.</p>
-        </div>
+       <!-- Card: Alternative Dispute Resolution Laws -->
+<div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-800 hover:shadow-xl transition duration-300">
+  <i class="fas fa-handshake text-4xl text-blue-800 mb-4"></i>
+  <h4 class="text-xl font-bold text-gray-900 mb-2">Alternative Dispute Resolution Laws</h4>
+  <p class="text-gray-600 text-sm">
+    Focuses on arbitration, mediation, and conciliation mechanisms that promote conflict resolution outside traditional court systems.
+  </p>
+</div>
+
         <!-- Card 2: Human Rights -->
         <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-yellow-600 hover:shadow-xl transition duration-300">
           <i class="fas fa-balance-scale text-4xl text-yellow-600 mb-4"></i>
@@ -1847,15 +1897,15 @@ section, header {
     <!-- Admission Coordinator -->
     <div class="flex justify-center mb-16">
       <div class="flex items-center gap-6 bg-white p-8 rounded-2xl shadow-lg border-t-4 border-yellow-500 hover:shadow-2xl transition duration-300">
-        <img src="static/images/faculty/faculty1.jpg" 
+        <img src="static/images/faculty/faculty3.jpg" 
              onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e3a8a/ffffff?text=SP';" 
              alt="Mr. Shivakumargouda Patil"
              class="w-28 h-28 object-cover rounded-full border-4 border-yellow-400 shadow-md">
         <div>
-          <h3 class="text-2xl font-bold text-gray-900">Mr. Shivakumargouda Patil</h3>
+          <h3 class="text-2xl font-bold text-gray-900">Mr. D. S. Sagar</h3>
           <p class="text-yellow-700 font-semibold">Admissions Coordinator</p>
-          <p class="text-sm text-gray-600">Director, GM School of Law, GM University, Davanagere</p>
-          <p class="text-sm text-gray-600">Email: <a href="mailto:shivakumargoudap@gmu.ac.in" class="text-blue-700 hover:underline">shivakumargoudap@gmu.ac.in</a></p>
+          <p class="text-sm text-gray-600"></p>
+          <p class="text-sm text-gray-600">Email: <a href="mailto:dssagar.flspp@gmu.ac.in" class="text-blue-700 hover:underline">dssagar.flspp@gmu.ac.in</a></p>
         </div>
       </div>
     </div>
@@ -1864,7 +1914,7 @@ section, header {
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Program 1 -->
       <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-blue-800 text-center hover:shadow-2xl transition duration-300">
-        <h3 class="text-2xl font-bold text-blue-800 mb-4">LL.B. (Bachelor of Legislative Law)</h3>
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">LL.B. (Bachelor of Law)</h3>
         <ul class="text-left space-y-2 mb-6 inline-block">
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>3-year program after Graduation (B.A., B.Sc., B.Com., B.B.A., B.E. or equivalent)</li>
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Focus: Legal theory, research, and advocacy skills</li>
@@ -1877,7 +1927,7 @@ section, header {
 
       <!-- Program 2 -->
       <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-700 text-center hover:shadow-2xl transition duration-300">
-        <h3 class="text-2xl font-bold text-green-700 mb-4">B.B.A., LL.B. (Integrated)</h3>
+        <h3 class="text-2xl font-bold text-green-700 mb-4">B.B.A., LL.B.</h3>
         <ul class="text-left space-y-2 mb-6 inline-block">
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>5-year integrated program after 10+2 (any stream)</li>
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Combines management and legal education</li>
@@ -1890,7 +1940,7 @@ section, header {
 
       <!-- Program 3 -->
       <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-yellow-600 text-center hover:shadow-2xl transition duration-300">
-        <h3 class="text-2xl font-bold text-yellow-700 mb-4">B.Com., LL.B. (Integrated)</h3>
+        <h3 class="text-2xl font-bold text-yellow-700 mb-4">B.Com., LL.B.</h3>
         <ul class="text-left space-y-2 mb-6 inline-block">
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>5-year integrated program after 10+2 (any stream)</li>
           <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Emphasis on commerce, taxation, and corporate law</li>
@@ -1917,15 +1967,15 @@ section, header {
     <!-- Placement Coordinator -->
     <div class="flex justify-center mb-16">
       <div class="flex items-center gap-6 bg-white p-8 rounded-2xl shadow-lg border-t-4 border-green-600 hover:shadow-2xl transition duration-300">
-        <img src="static/images/faculty/faculty1.jpg"
+        <img src="static/images/faculty/faculty4.jpg"
              onerror="this.onerror=null; this.src='https://placehold.co/120x120/14532d/ffffff?text=SP';"
              alt="Placement Coordinator"
              class="w-28 h-28 object-cover rounded-full border-4 border-green-500 shadow-md">
         <div>
-          <h3 class="text-2xl font-bold text-gray-900">Mr. Shivakumargouda Patil</h3>
+          <h3 class="text-2xl font-bold text-gray-900">Ms. Priya Nallur</h3>
           <p class="text-green-700 font-semibold">Placement Coordinator</p>
-          <p class="text-sm text-gray-600">Director, GM School of Law, GM University, Davanagere</p>
-          <p class="text-sm text-gray-600">Email: <a href="mailto:shivakumargoudap@gmu.ac.in" class="text-blue-700 hover:underline">shivakumargoudap@gmu.ac.in</a></p>
+          <p class="text-sm text-gray-600"></p>
+          <p class="text-sm text-gray-600">Email: <a href="mailto:priyavn.flpp@gmu.ac.in" class="text-blue-700 hover:underline">shivakumargoudap@gmu.ac.in</a></p>
         </div>
       </div>
     </div>
