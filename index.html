@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of LAW - GM University</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Load Inter font - assumed from the original structure -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Configure Tailwind for Inter font */
+        html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+        /* Custom Styles for Princeton-Inspired Look and Complex Layouts */
+
+        /* Variables and Core Styling */
+        :root {
+--primary-color: #000000; /* Black */
+--secondary-color: #d4af37; /* Gold */
+--light-bg: #1a1a1a; /* Dark gray */
+--dark-text: #ffffff; /* White text */
+}
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('static/background/background.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.25;
+}
+
+section, header {
+  background: transparent !important;
+}
+
+
+
+        /* 1. Header & Top Bar */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        }
+        .top-bar {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 0;
+            font-size: 0.8rem;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .contact-info span, .kcet-codes span {
+            margin-right: 24px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .contact-info i { margin-right: 5px; color: var(--secondary-color); }
+        
+        .university-brand { display: flex; align-items: center; }
+        .university-brand .logo { height: 50px; width: 50px; border-radius: 50%; margin-right: 10px; }
+        .brand-text h1 { font-size: 1.2rem; font-weight: 700; line-height: 1; margin: 0; color: #fff; }
+        .brand-text p { font-size: 0.7rem; font-weight: 300; margin: 0; color: #ccc; }
+
+        .navbar {
+            padding: 0;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-menu li a {
+            padding: 1rem 1rem;
+            display: block;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-bottom: 3px solid transparent;
+        }
+        .nav-menu li a:hover, .nav-menu li a.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        .hamburger { display: none; cursor: pointer; padding: 10px; }
+        .hamburger span { display: block; width: 25px; height: 3px; background-color: var(--dark-text); margin: 5px 0; transition: all 0.3s ease; }
+
+        /* 2. News Line */
+        .news-line {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 5px 0;
+            overflow: hidden;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .news-line marquee { padding: 0 1rem; }
+
+        /* 3. Hero Section (Slider) - Custom CSS needed for Ken Burns/Fade */
+        .slider { height: 50vh; position: relative; overflow: hidden; }
+        .slides { width: 100%; height: 100%; position: relative; }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #333; background-size: cover; background-repeat: no-repeat;
+            background-position: center 40%;
+            transform: scale(1.05); /* Initial scale for the zoom effect */
+            opacity: 0; transition: opacity 1.5s ease-in-out; z-index: 1;
+        }
+        .slide.active {
+            opacity: 1; z-index: 2;
+            animation: kenburns-zoom 2s linear forwards; /* Start the slow zoom */
+        }
+        @keyframes kenburns-zoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.15); }
+        }
+        .slide-overlay {
+            position: absolute; left: 0; right: 0; bottom: 12%; text-align: center;
+            padding: 24px 40px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            max-width: 900px; z-index: 5;
+        }
+        .slide-overlay h1 { margin: 0; font-size: 1.2rem; font-weight: 600; opacity: .95; }
+        .slide-overlay h2 { margin: 6px 0 10px; font-size: 2.6rem; line-height: 1; font-weight: 700; }
+        .slide-overlay p { margin: 0; font-size: 1rem; opacity: .95; }
+
+        /* 4. Section General Styling */
+        .section { padding: 4rem 1rem; background-color: #fff; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-title { font-size: 2.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .section-subtitle { font-size: 1.125rem; color: #666; }
+
+        /* 5. Walkthrough Video Section */
+        /* Make the walkthrough/video section span the full viewport and ensure the video covers it */
+        .video-section {
+            position: relative;
+            min-height: 100vh;
+            height: 100vh; /* full viewport height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Make the video fill its parent and maintain aspect ratio by cropping (cover) */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ensures full coverage without distortion */
+            z-index: 0;
+        }
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.28); /* Dark overlay */
+            z-index: 1;
+        }
+        .video-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            border-radius: 0.75rem;
+        }
+        .video-content .section-title { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .video-content p { font-size: 1.1rem; }
+        .video-content .btn-primary {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .video-content .btn-primary:hover { background-color: #e6673c; }
+
+        /* 6. Achievements Slider (Marquee Effect via CSS Animation) */
+        .achievements-section { background-color: var(--light-bg); padding: 5rem 0; overflow: hidden; }
+        .section-achievements { color: var(--secondary-color); }
+        .achievements-slider { width: 100%; overflow: hidden; padding: 20px 0; }
+        .slider-track {
+            display: flex;
+            width: max-content; /* Ensure the track is wide enough for all duplicates */
+            animation: scroll 30s linear infinite;
+        }
+        .achievement-card {
+            background: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin: 0 15px;
+            width: 300px; /* Fixed width for card */
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); }
+        .achievement-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .achievement-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 15px)); } /* Scrolls exactly halfway (5 duplicated items + 15px margin) */
+        }
+
+        /* 7. Vision/Mission */
+        .vision-mission { background-color: #fff; }
+        .vision-mission-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+        .vision-card {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .mission-card {
+            background: var(--light-bg) !important;
+            color: var(--dark-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07) !important;
+        }
+        .card-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 16px;
+        }
+        .vision-card h3, .mission-card h3 { font-weight: 700; font-size: 32px; margin-top: 0; }
+        .vision-card li { list-style: none; padding: 0; margin-top: 10px; font-weight: 300; line-height: 1.5; }
+        .mission-card ul { list-style-type: none; padding-left: 0; }
+        .mission-card li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* 8. Gallery */
+        .featured-video { max-width: 900px; margin: 2rem auto; }
+        .featured-video iframe { width: 100%; height: 500px; border-radius: 0.75rem; }
+        .sub-heading { font-size: 1.5rem; color: var(--primary-color); font-weight: 600; margin-top: 3rem; margin-bottom: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+        .video-grid iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .photo-grid img:hover { transform: scale(1.05); }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .lightbox-img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 0.75rem;
+        }
+
+        /* 9. About Section */
+        .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: center; }
+        .about-content p { margin-bottom: 1.5rem; line-height: 1.8; color: var(--dark-text); }
+        .about-image img { width: 100%; height: auto; border-radius: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+        /* SECTION BACKGROUND */
+        .hod-message { 
+            background-color: var(--light-bg); 
+            padding: 6rem 1rem; /* More vertical padding for space */
+        }
+        
+        /* CARD CONTAINER - White, clean, spacious */
+        .hod-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 4rem; /* Increased gap for more breathing room */
+            max-width: 1200px; /* Wider card */
+            margin: 0 auto;
+            background: #fff;
+            padding: 3rem; /* Increased internal padding */
+            border-radius: 16px;
+            /* Subtle, professional shadow */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08); 
+        }
+        
+        /* HOD IMAGE (Circle) */
+        .hod-image img {
+            width: 150px; /* Slightly larger image */
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--secondary-color); /* Thicker, defined border */
+            margin: 0 auto 1rem;
+            display: block; 
+            transition: transform 0.3s ease;
+        }
+        .hod-image img:hover {
+            transform: scale(1.03); /* Subtle hover effect */
+        }
+        .hod-image p {
+            color: var(--text-color);
+        }
+
+        /* MESSAGE TEXT */
+        .hod-text {
+            color: var(--text-color);
+        }
+
+        /* MAIN TITLE (H2) */
+        .hod-text h2 {
+            font-size: 2.25rem; 
+            font-weight: 700; /* Bold, but not ultra-bold */
+            color: var(--primary-color); 
+            margin-bottom: 1.5rem; 
+            border-bottom: 3px solid var(--secondary-color); /* Thinner border */
+            display: inline-block;
+            padding-bottom: 0.5rem; 
+        }
+        
+        /* BLOCKQUOTE (Message Body) */
+        .hod-text blockquote {
+            margin: 2rem 0; /* More space around the quote */
+            border-left: 5px solid var(--secondary-color); /* Clear left border */
+            padding-left: 2rem;
+            font-style: normal; /* Removing italics for a cleaner academic tone */
+            font-size: 1.1rem;
+            line-height: 1.75;
+        }
+        
+        /* HOD INFO (Signature) */
+        .hod-info h4:first-child { 
+            font-weight: 700;
+            font-size: 1.25rem; /* Larger name */
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .hod-info h4:last-child {
+            color: var(--primary-color);
+            font-size: 0.95rem; 
+            font-weight: 400; /* Regular weight for descriptive text */
+            opacity: 0.8;
+            margin-top: 0;
+        }
+
+        /* Responsive adjustments for small screens */
+        @media (max-width: 768px) {
+            .hod-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+            .hod-message {
+                padding: 4rem 0.5rem;
+            }
+        }
+
+        /* 11. Faculty */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .faculty-card {
+            background: var(--light-bg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .faculty-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary-color);
+        }
+        .faculty-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px; }
+        .faculty-card .position { color: var(--secondary-color); font-style: italic; margin-bottom: 1rem; }
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover { background-color: #003366; }
+
+        /* 12. Student Corner & Resources */
+        .corner-grid, .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .corner-card, .resource-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            border-top: 5px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+        .corner-card:hover, .resource-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+        .corner-card img, .resource-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .corner-card h3, .resource-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .corner-link { color: var(--secondary-color); font-weight: 600; margin-top: 1rem; display: block; }
+        .resources { background-color: var(--light-bg); }
+
+        /* 13. IQAC */
+        .iqac-section { background-color: #fff; }
+        .iqac-coordinator { text-align: center; margin-bottom: 3rem; }
+        .coordinator-info { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border: 1px solid #ddd; border-radius: 0.75rem; }
+        .coordinator-info img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; }
+        .coordinator-details h3 { font-size: 1.125rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+        .coordinator-details p { color: #666; margin: 0; font-style: italic; }
+        .iqac-documents { display: flex; justify-content: center; }
+        .document-list { display: flex; flex-wrap: wrap; gap: 20px; max-width: 800px; }
+        .document-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 0.5rem;
+            flex: 1 1 calc(50% - 10px);
+            border-left: 5px solid var(--primary-color);
+        }
+        .document-item i { font-size: 1.5rem; color: var(--secondary-color); }
+        .document-info h4 { font-size: 1rem; font-weight: 600; margin: 0 0 5px 0; color: var(--dark-text); }
+        .document-info p { font-size: 0.875rem; color: #777; margin: 0 0 5px 0; }
+        .download-link { color: var(--primary-color); font-weight: 500; font-size: 0.875rem; }
+        
+        /* 14. Responsive adjustments */
+        @media (max-width: 1024px) {
+            .nav-menu li a { padding: 1rem 0.75rem; font-size: 0.85rem; }
+            .top-bar .container { flex-direction: column; text-align: center; gap: 10px; }
+            .contact-info, .kcet-codes { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .slider { height: 35vh; }
+            .slide-overlay { padding: 16px 20px; bottom: 8%; }
+            .slide-overlay h2 { font-size: 1.8rem; }
+            .top-bar .container { align-items: center; }
+            .university-brand { margin: 10px 0; }
+            .contact-info span, .kcet-codes span { margin-right: 0; margin: 0 10px; }
+            .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px 0; }
+            .nav-menu.active { display: flex; }
+            .hamburger { display: block; }
+            .navbar .container { justify-content: flex-end; }
+            .section { padding: 3rem 1rem; }
+            .about-grid, .vision-mission-grid, .hod-content { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+            .hod-image { margin: 0 auto; }
+            .hod-content { text-align: center; }
+            .hod-text blockquote { text-align: left; }
+            .document-item { flex: 1 1 100%; }
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-100% - 15px)); } /* Adjust for mobile scrolling of 1 card width */
+            }
+        }
+
+        .achievements-slider, .recruiters-slider {
+            overflow: hidden;
+            padding: 2rem 0;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .slider-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll-left 30s linear infinite;
+        }
+        .recruiters-slider .slider-track {
+             animation: scroll-left-fast 20s linear infinite;
+        }
+        .achievement-card, .recruiter-slide {
+            flex-shrink: 0;
+            width: 320px;
+            margin-right: 2rem;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-left-fast {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Pause animation on hover */
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Utility classes replacement for provided CSS */
+        .scrollTopBtn {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: #f4b400;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 22px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem; /* 40px */
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1d1e1e;
+        }
+        .section-subtitle {
+            font-size: 1.5rem; /* 24px */
+            color: #374151; /* gray-700 */
+            margin-top: 0.5rem; /* 8px */
+        }
+
+        /* Chatbot Styles */
+        .chatbot {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 350px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: none;
+            z-index: 1000;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(90deg, #f4b400, #f39c12);
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .chatbot-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .chatbot-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .chatbot-toggle {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9fafb;
+            max-height: 400px;
+        }
+
+        .bot-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .message-content {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            max-width: 80%;
+        }
+
+        .message-text {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .quick-replies {
+            margin-top: 10px;
+        }
+
+        .quick-reply {
+            margin: 3px;
+            background: #f4b400;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            padding: 8px;
+        }
+
+        .chatbot-send {
+            background: #f4b400;
+            border: none;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .chatbot-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .chatbot-float-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .chatbot-float-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chatbot-float-message {
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            max-width: 220px;
+        }
+
+        .chatbot-float-title {
+            font-weight: 600;
+            display: block;
+        }
+
+        .chatbot-float-subtitle {
+            font-size: 0.9rem;
+        }
+
+        /* Theme Color Classes */
+        .primary-border-top {
+            border-top-color: var(--primary-color);
+        }
+
+        .secondary-border-top {
+            border-top-color: var(--secondary-color);
+        }
+
+        .primary-text {
+            color: var(--primary-color);
+        }
+
+        .secondary-text {
+            color: var(--secondary-color);
+        }
+        
+        /* Specific UCP background styles (retaining original intent for gradient) */
+        #ucp {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(16, 185, 129, 0.9)); /* Blue to Green gradient with opacity */
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-screen-2xl mx-auto">
+        <!-- Header -->
+        <header class="header" style="font-family: 'Poppins', sans-serif; padding: 10px 0;">
+  <div class="top-bar" style="width: 100%;">
+
+    <div class="container" style="max-width: 1900px; margin: 0 auto;">
+
+      <!-- Contact Info -->
+      <div class="contact-info" style="display: flex; justify-content: center; align-items: center; gap: 30px; color: #ffcc00; font-size: 15px; margin-bottom: 10px;">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-phone"></i> +91-9986789076
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-envelope"></i> shivakumargp.flspp@gmu.ac.in
+        </span>
+      </div>
+
+     
+
+        <!-- Left: Logo -->
+        <div style="flex: 1; display: flex; justify-content: flex-start; align-items: right;">
+          <img 
+            src="static/images/college logo.jpg" 
+            onerror="this.onerror=null; this.src='https://placehold.co/85x85/00458B/ffffff?text=GMU'" 
+            alt="GM University Logo"
+            style="width: 85px; height: 85px; border-radius: 50%; object-fit: cover; margin-left: 40px;"
+          >
+        </div>
+
+        <!-- Center: Department Titles -->
+         <div style="flex: 2; text-align: center; line-height: 1.3; margin-left: -80px;">
+  <h1 style="color:#eee; font-size: 38px; font-weight: 800; margin: 0; white-space: nowrap;">
+    G M School of Law
+  </h1>
+  <h2 style="color:#fff; font-size: 18px; font-weight: 600; margin: 4px 0 0 0;">
+    Recognised by Bar Council of India (BCI)
+  </h2>
+</div>
+
+
+        <!-- Right: KCET Code -->
+        <div style="flex: 1; text-align: right; padding-right: 40px;">
+          <a href="https://gmu.ac.in/contact" target="_blank"
+   style="display: inline-block; background-color: #FFD700; color: #000; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">
+  Admissions open for 2025-26
+</a>
+
+        </div>
+      </div>
+
+      <!-- Blinking Animation -->
+      <style>
+        @keyframes blink {
+          0%, 50%, 100% { opacity: 1; }
+          25%, 75% { opacity: 0; }
+        }
+
+        /* Responsive tweak for smaller screens */
+        @media (max-width: 900px) {
+          .university-brand {
+            flex-direction: column;
+            text-align: center;
+          }
+          .university-brand div {
+            flex: none;
+            padding: 5px 0;
+          }
+          .university-brand img {
+            margin: 10px auto;
+          }
+          .university-brand h1 {
+            font-size: 32px;
+          }
+          .university-brand h2 {
+            font-size: 20px;
+          }
+        }
+      </style>
+
+    </div>
+  </div>
+</header>
+
+        <!-- News Line -->
+        <div class="news-line">
+            <!-- Tailwind does not have a native marquee component, using the HTML tag and custom styling -->
+            <marquee behavior="scroll" direction="left" scrollamount="10">
+                🚀 Your journey into the world of Law starts now | 🌟 New Courses in modern legal codes launched! |
+| 🧑‍⚖️ Fun fact: The Bharatiya Nyaya Sanhita, 2023 is set to replace the old Indian Penal Code, 1860 (IPC). | 📖 Law + Justice = Perfect combo for a future legal expert.
+🌟 New Courses in modern legal codes launched! | 🧑‍⚖️ Reminder: Today is October 13, 2025! |
+| 🚨 Important: Two exams are scheduled for today, 13-10-2025 - Bharatiya Nyaya Sanhita, 2023 (First Sem) and Family Law-2 (Second Sem). | 📖 Success starts with preparation! Best of luck!
+            </marquee>
+        </div>
+
+        <!-- Hero Section with Slider -->
+        <section id="home" class="hero-section slider-section">
+            <div class="slider" aria-label="Hero slider">
+                <div class="slides" id="slides">
+                    <!-- Slide 1 -->
+                    <div class="slide active" style="background-image: url('static/images/hero1.png');">
+                        <div class="slide-overlay">
+                            <h1>Department of</h1><h2>LAW</h2>
+                            <p></p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide" style="background-image: url('static/images/hero2.png');">
+                        <div class="slide-overlay">
+                            <h1>Research & Innovation</h1><h2>AI & Analytics</h2>
+                            <p>Cutting-edge research driving real-world solutions.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide" style="background-image: url('static/images/hero3.jpg');">
+                        <div class="slide-overlay">
+                            <h1>Student Success</h1><h2>Placements & Projects</h2>
+                            <p>Preparing leaders for the data-driven world.</p>
+                        </div>
+                    </div>
+                    <!-- slide 4 -->
+                    <div class="slide" style="background-image: url('static/images/hero4.jpg');">
+                        <div class="slide-overlay">
+                            <h1>Student Success</h1><h2>Placements & Projects</h2>
+                            <p>Preparing leaders for the data-driven world.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacer -->
+        <div class="py-2"></div>
+
+        <!-- Walkthrough Video Section -->
+        <section id="walkthrough-video" class="section video-section">
+            <!-- IMPORTANT: Since the video is external and not provided, I'll use a placeholder URL. -->
+            <video class="background-video" autoplay muted loop poster="https://placehold.co/1920x1080/00458B/ffffff?text=Walkthrough+Video+Cover" playsinline webkit-playsinline>
+                <source src="static/videos/departement-walkthrough.mp4" type="video/mp4">
+                <source src="static/videos/departement-walkthrough.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="video-content container-fluid">
+                <h2 class="section-title text-center">Take a Virtual Walkthrough!</h2>
+                <p class="text-center">Experience our state-of-the-art facilities firsthand.</p>
+                <a href="#about" class="btn btn-primary mt-3 inline-block">Explore More</a>
+            </div>
+        </section>
+
+        <!-- <section id="achievements" class="section achievements-section">
+    <div class="section-header">
+        <h2 class="section-title section-achievements">Latest Achievements</h2>
+        <p class="section-subtitle">Celebrating milestones of excellence</p>
+    </div>
+
+    <div class="achievements-slider">
+        <div class="slider-track">
+            
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/28A745/ffffff?text=Add+Achievement+1'" alt="Achievement Placeholder 1">
+                <h3>Placeholder Title 1</h3>
+                <p>Content cleared. Add the first achievement description here. 🚀</p>
+            </div>
+
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/17A2B8/ffffff?text=Add+Achievement+2'" alt="Achievement Placeholder 2">
+                <h3>Placeholder Title 2</h3>
+                <p>Content cleared. Add the second achievement description here. 💡</p>
+            </div>
+
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/FFC107/ffffff?text=Add+Achievement+3'" alt="Achievement Placeholder 3">
+                <h3>Placeholder Title 3</h3>
+                <p>Content cleared. Add the third achievement description here. 🏅</p>
+            </div>
+            
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/28A745/ffffff?text=Add+Achievement+1'" alt="Achievement Placeholder 1 Copy">
+                <h3>Placeholder Title 1 (Copy)</h3>
+                <p>Content cleared. Add the first achievement description here. 🚀</p>
+            </div>
+
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/17A2B8/ffffff?text=Add+Achievement+2'" alt="Achievement Placeholder 2 Copy">
+                <h3>Placeholder Title 2 (Copy)</h3>
+                <p>Content cleared. Add the second achievement description here. 💡</p>
+            </div>
+
+            <div class="achievement-card">
+                <img src="" onerror="this.onerror=null; this.src='https://placehold.co/300x180/FFC107/ffffff?text=Add+Achievement+3'" alt="Achievement Placeholder 3 Copy">
+                <h3>Placeholder Title 3 (Copy)</h3>
+                <p>Content cleared. Add the third achievement description here. 🏅</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+   <!-- Vision, Mission & Objectives Section (GM School of Law) -->
+<section class="vision-mission section py-16 bg-gray-50">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+
+      <!-- Vision Card -->
+      <div class="bg-white shadow-lg rounded-2xl p-8 border-t-8 border-blue-600 hover:shadow-2xl transition duration-300">
+        <div class="mb-4">
+          <i class="fas fa-eye text-4xl text-blue-600"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Vision</h3>
+        <p class="text-gray-700 leading-relaxed">
+          GM School of Law will have a transformative impact on society through continual innovation in legal education, research, skill development, creativity, and entrepreneurship.
+        </p>
+      </div>
+
+      <!-- Mission Card -->
+      <div class="bg-white shadow-lg rounded-2xl p-8 border-t-8 border-green-600 hover:shadow-2xl transition duration-300">
+        <div class="mb-4">
+          <i class="fas fa-rocket text-4xl text-green-600"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Mission</h3>
+        <ul class="text-left text-gray-700 space-y-3 list-disc list-inside">
+          <li>To disseminate knowledge and conduct research in law with learner-centric approach.</li>
+          <li>To teach skills such as critical thinking, creativity and innovation, collaboration, communication, technical and digital, flexibility and adaptability, cultural values, and leadership and responsibility.</li>
+          <li>To develop global citizens by educating students on emotional, physical, social, economic, environmental, and spiritual dimensions of human growth in addition to intellectual pursuits.</li>
+          <li>To address real-world challenges and to establish the groundwork for entrepreneurship and lifelong learning.</li>
+        </ul>
+      </div>
+
+      <!-- Objectives Card -->
+      <div class="bg-white shadow-lg rounded-2xl p-8 border-t-8 border-yellow-500 hover:shadow-2xl transition duration-300">
+        <div class="mb-4">
+          <i class="fas fa-bullseye text-4xl text-yellow-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Objectives</h3>
+        <ul class="text-left text-gray-700 space-y-3 list-disc list-inside">
+          <li>Deliver high-quality education in core and emerging areas of law to produce competent, ethical, and socially responsible legal professionals.</li>
+          <li>Promote advanced research and innovation in contemporary legal issues to address societal, industrial, and environmental challenges.</li>
+          <li>Foster interdisciplinary learning and collaboration between law, technology, management, and social sciences to develop well-rounded legal practitioners.</li>
+          <li>Develop professional, advocacy, and leadership skills among students to excel in diverse national and international legal environments.</li>
+          <li>Engage with judiciary, legal fraternity, industry, and community through legal aid, consultancy, skill development, and awareness programs for justice and social development.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+        <!-- ================= GALLERY SECTION ================= -->
+        <section id="gallery" class="gallery-section section bg-gray-50">
+            <div class="container max-w-7xl mx-auto px-4">
+                <div class="section-header">
+                    <h2 class="section-title">Gallery</h2>
+                    <p class="section-subtitle">Explore our events, achievements, and campus life</p>
+                </div>
+
+                <!-- Featured Video -->
+                <!-- <div class="featured-video"> -->
+                    <!-- Placeholder iframe due to static URL. Added height/width to prevent CLS -->
+                    <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/HPiSuT-ubLI" title="GM University Davanagere, Vice-Chancellor - Dr SR Shankapal Sir Interview about GM UNIVERSITY." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div> -->
+
+                <!-- Video Grid -->
+                <!-- <h3 class="sub-heading">GMU <i class="fas fa-video"></i> videos</h3>
+                <div class="video-grid">
+                    <iframe width="853" height="480" src="https://www.youtube.com/embed/ybTbIlKgWlY" title="Join GM University – Admissions 2025 Now Open!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="853" height="480" src="https://www.youtube.com/embed/kwIRPM-UlQQ" title="GM University : ಮಧ್ಯ ಕರ್ನಾಟಕದಲ್ಲಿ ಶೈಕ್ಷಣಿಕ ಮುಕುಟ ಈ GMU | Golden Life | @newsfirstkannada" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="853" height="480" src="https://www.youtube.com/embed/leiMlvSX1V8" title="GM Institute of Technology, Davangere" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div> -->
+
+                <!-- Photo Grid -->
+                <h3 class="sub-heading">GMU <i class="fas fa-camera"></i> Photos</h3>
+                <div class="photo-grid">
+                    <!-- Placeholders for images -->
+                    <img src="static/events/event1.jpg" alt="Event 1" onclick="openLightbox(this)">
+                    <img src="static/events/event2.jpg" alt="Event 2" onclick="openLightbox(this)">
+                    <img src="static/events/event3.jpg" alt="Event 3" onclick="openLightbox(this)">
+                    <img src="static/events/event4.jpg" alt="Event 4" onclick="openLightbox(this)">
+                    <img src="static/events/event5.jpg" alt="Event 5" onclick="openLightbox(this)">
+                    <img src="static/events/event6.jpg" alt="Event 6" onclick="openLightbox(this)">
+                    <img src="static/events/event7.jpg" alt="Event 7" onclick="openLightbox(this)">
+                    <img src="static/events/event8.jpg" alt="Event 8" onclick="openLightbox(this)">
+                    <img src="static/events/event9.jpg" alt="Event 9" onclick="openLightbox(this)">
+                    <img src="static/events/event10.jpg" alt="Event 10" onclick="openLightbox(this)">
+                    <img src="static/events/event11.jpg" alt="Event 11" onclick="openLightbox(this)">
+                    <img src="static/events/event12.jpg" alt="Event 12" onclick="openLightbox(this)">
+                    <img src="static/events/event13.jpg" alt="Event 13" onclick="openLightbox(this)">
+                    <img src="static/events/event14.png" alt="Event 14" onclick="openLightbox(this)">
+                    <img src="static/events/event15.png" alt="Event 15" onclick="openLightbox(this)">
+                    <img src="static/events/event16.png" alt="Event 16" onclick="openLightbox(this)">
+                    <img src="static/events/event17.png" alt="Event 17" onclick="openLightbox(this)">
+                    <img src="static/events/event18.png" alt="Event 18" onclick="openLightbox(this)">
+                </div>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+                <img id="lightbox-img" class="lightbox-img" src="">
+            </div>
+        </section>
+<!-- Quick Access Section - GM School of Law -->
+<section id="quick-access" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Background watermark (Scales of Justice) -->
+  <div class="absolute inset-0 bg-[url('static/images/justice-bg.png')] bg-center bg-contain opacity-10"></div>
+
+  <div class="container relative z-10 mx-auto px-4 max-w-7xl text-center">
+    <h2 class="text-4xl font-extrabold text-gray-900 mb-2">Quick Access</h2>
+    <p class="text-lg text-blue-800 font-medium mb-12">Access important academic, legal, and administrative resources at a glance.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- About -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-blue-700 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-landmark text-4xl text-blue-700 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">About Us</h3>
+        <p class="text-sm text-gray-700">Discover the GM School of Law — its vision, mission, and legacy of excellence in legal education.</p>
+        <a href="#about" class="text-sm text-blue-700 hover:underline mt-3 block">Learn More</a>
+      </div>
+
+      <!-- Programs -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-yellow-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-scroll text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Programs Offered</h3>
+        <p class="text-sm text-gray-700">Explore our LL.B., B.B.A., LL.B., and B.Com., LL.B. programs designed for future legal professionals.</p>
+        <a href="#programs" class="text-sm text-yellow-600 hover:underline mt-3 block">View Programs</a>
+      </div>
+
+      <!-- Learning Resources -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-orange-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-book-open text-4xl text-orange-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Study Materials</h3>
+        <p class="text-sm text-gray-700">Access legal notes, case briefs, moot court records, and previous exam papers to enhance your preparation.</p>
+        <a href="#student-corner" class="text-sm text-orange-500 hover:underline mt-3 block">Visit Resources</a>
+      </div>
+
+      <!-- Faculty -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-teal-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-user-tie text-4xl text-teal-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Faculty Directory</h3>
+        <p class="text-sm text-gray-700">Meet our distinguished faculty and legal experts contributing to teaching and research excellence.</p>
+        <a href="#faculty" class="text-sm text-teal-600 hover:underline mt-3 block">Meet Our Faculty</a>
+      </div>
+
+      <!-- BOS -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-indigo-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-users-cog text-4xl text-indigo-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Board of Studies</h3>
+        <p class="text-sm text-gray-700">Review meeting minutes, policy updates, and curriculum design initiatives led by the BOS.</p>
+        <a href="#bos" class="text-sm text-indigo-600 hover:underline mt-3 block">View BOS Reports</a>
+      </div>
+
+      <!-- Research -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-red-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-balance-scale text-4xl text-red-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Research & Publications</h3>
+        <p class="text-sm text-gray-700">Explore faculty and student research papers, law reviews, and journal publications.</p>
+        <a href="#research" class="text-sm text-red-600 hover:underline mt-3 block">Research Hub</a>
+      </div>
+
+      <!-- Moot Court -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-yellow-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-gavel text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Moot Court & Legal Aid</h3>
+        <p class="text-sm text-gray-700">Information on moot court competitions, legal aid clinics, and student advocacy initiatives.</p>
+        <a href="#activities" class="text-sm text-yellow-600 hover:underline mt-3 block">Explore Activities</a>
+      </div>
+
+      <!-- Placements -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-green-600 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-briefcase text-4xl text-green-600 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Placements</h3>
+        <p class="text-sm text-gray-700">Check internship programs, campus placement statistics, and collaborations with law firms and NGOs.</p>
+        <a href="#placements" class="text-sm text-green-600 hover:underline mt-3 block">Placement Cell</a>
+      </div>
+
+      <!-- Achievements -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-pink-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-award text-4xl text-pink-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Achievements</h3>
+        <p class="text-sm text-gray-700">Recognizing excellence in teaching, research, advocacy, and social justice outreach.</p>
+        <a href="#achievements" class="text-sm text-pink-600 hover:underline mt-3 block">View Achievements</a>
+      </div>
+
+      <!-- Alumni -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-cyan-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-user-graduate text-4xl text-cyan-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Alumni Network</h3>
+        <p class="text-sm text-gray-700">Stay connected with alumni working across courts, corporates, judiciary, and international law firms.</p>
+        <a href="#alumni" class="text-sm text-cyan-600 hover:underline mt-3 block">Connect Now</a>
+      </div>
+
+      <!-- Admissions -->
+      <div class="academic-card bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-blue-500 hover:shadow-xl hover:scale-105 transition duration-300">
+        <i class="fas fa-clipboard-check text-4xl text-blue-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2 text-gray-900">Admissions</h3>
+        <p class="text-sm text-gray-700">Check eligibility, application process, and deadlines for LL.B. and integrated programs.</p>
+        <a href="#admissions" class="text-sm text-blue-600 hover:underline mt-3 block">Apply Now</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+        <!-- About GM School of Law (Glassmorphism Style) -->
+<section id="about" class="relative py-20 bg-gray-100 overflow-hidden">
+  <!-- Subtle background watermark -->
+  <div class="absolute inset-0 bg-[url('static/images/lady-justice-bg.png')] bg-cover bg-center opacity-20"></div>
+
+  <div class="container relative z-10 max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-2">About GM School of Law</h2>
+      <p class="text-lg text-blue-700 font-semibold">Excellence in Legal Education, Research & Justice</p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      
+      <!-- Left Side: Glass Card -->
+      <div class="relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-10 text-white">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/60 to-blue-700/40 rounded-2xl"></div>
+        <div class="relative z-10 text-gray-100 space-y-5 leading-relaxed">
+          
+          <p>
+            The <strong>GM School of Law</strong> is committed to excellence in teaching, research, and professional development. 
+            Established with the vision of preparing students to address the evolving challenges of law and justice in a dynamic society, 
+            the department offers <strong>undergraduate, postgraduate, and doctoral programs</strong> that combine strong theoretical 
+            foundations with practical exposure.
+          </p>
+
+          <p>
+            Our curriculum covers diverse areas of law such as 
+            <strong>Constitutional Law, Administrative Law, Criminal Law, Civil Law, Corporate and Commercial Law, International Law, 
+            Intellectual Property Rights, Human Rights, Environmental Law, Cyber Law,</strong> and 
+            <strong>Alternative Dispute Resolution (ADR).</strong> Students are encouraged to build 
+            <strong>critical thinking, advocacy skills, and ethical values</strong> through moot courts, legal aid clinics, 
+            internships, debates, seminars, and research projects.
+          </p>
+
+          <p>
+            The department is supported by a team of <strong>highly qualified faculty members</strong> engaged in teaching, 
+            research, consultancy, and policy studies. Equipped <strong>moot court halls, digital legal databases,</strong> 
+            and access to journals foster an enriching academic environment.
+          </p>
+
+          <p>
+            Collaborations with the <strong>Bar, Bench, law firms, NGOs,</strong> and corporate legal departments provide 
+            excellent placement and career opportunities. Graduates excel in <strong>litigation, judiciary, corporate practice, 
+            legal consultancy, academia,</strong> and <strong>public service.</strong>
+          </p>
+
+          <p>
+            The GM School of Law aims to promote <strong>justice, social responsibility, and the rule of law</strong> through 
+            education and professional engagement.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Side: Image -->
+      <div class="flex justify-center">
+        <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-500 w-full max-w-md transform hover:scale-105 transition duration-300">
+          <img 
+            src="static/images/about.jpg" 
+            onerror="this.onerror=null; this.src='https://placehold.co/500x350/1e3a8a/ffffff?text=GM+School+of+Law';" 
+            alt="GM School of Law Campus" 
+            class="object-cover w-full h-80"
+          >
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+ <!-- Director's Message - GM School of Law -->
+<section class="relative py-20 bg-gray-100 overflow-hidden">
+  <!-- Subtle background watermark (Lady Justice or Scales of Justice) -->
+  <div class="absolute inset-0 bg-[url('static/images/lady-justice-bg.png')] bg-cover bg-center opacity-10"></div>
+
+  <div class="container relative z-10 max-w-7xl mx-auto px-4">
+    <div class="backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl border border-white/20 p-10 md:p-16 flex flex-col md:flex-row items-center gap-10 bg-gradient-to-br from-blue-900/70 to-blue-800/60">
+
+      <!-- Director Photo -->
+      <div class="flex flex-col items-center text-center md:w-1/3">
+        <img
+          src="static/images/faculty/faculty1.jpg"
+          alt="Director of School of Law"
+          class="w-48 h-48 object-cover rounded-full border-4 border-yellow-500 shadow-lg mb-4"
+          onerror="this.onerror=null; this.src='https://placehold.co/150x150/1e3a8a/ffffff?text=Director';"
+        >
+        <p class="text-xl font-semibold text-white">Mr. Shivakumargouda Patil</p>
+        <p class="text-sm text-gray-200">Director, School of Law<br>GM University, Davanagere</p>
+      </div>
+
+      <!-- Director Message -->
+      <div class="text-white md:w-2/3">
+        <h2 class="text-3xl font-bold mb-4 text-yellow-400">Welcome to G M School of Law</h2>
+        <blockquote class="text-gray-100 leading-relaxed space-y-5 text-justify">
+          <p>
+            It is with immense joy and pride that I extend a warm welcome to each of you as you embark on your journey towards earning a Bachelor’s Degree in Law (LL.B., B.B.A., LL.B., and B.Com., LL.B.) at GM University.
+            Here, we are committed to providing a transformative learning experience that equips you with the knowledge, skills, and confidence required to excel in today’s dynamic legal world.
+          </p>
+          <p>
+            Our programs are carefully designed with a comprehensive curriculum that harmoniously blends theoretical insights with practical training, preparing you to meet the challenges of the global legal landscape. 
+            Guided by a distinguished faculty, you will find an intellectually stimulating environment that nurtures critical thinking, innovation, and an unwavering sense of ethical responsibility.
+          </p>
+          <p>
+            Once again, I extend my heartfelt welcome to the School of Law, GM University, Davanagere. 
+            I eagerly look forward to witnessing your academic journey, personal growth, and future accomplishments as professionals dedicated to justice and the rule of law.
+          </p>
+        </blockquote>
+
+        <div class="mt-8 border-t border-yellow-500 pt-4">
+          <h4 class="font-bold text-lg text-yellow-400">Warm Regards,</h4>
+          <p class="font-semibold">Mr. Shivakumargouda Patil, LL.M., K-SET (Ph.D.)</p>
+          <p class="text-sm text-gray-300">Director, School of Law<br>GM University, Davanagere</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Programs Offered - GM School of Law -->
+<section id="programs" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Subtle Background Watermark -->
+  <div class="absolute inset-0 bg-[url('static/images/justice-bg.png')] bg-center bg-contain opacity-10"></div>
+
+  <div class="container relative z-10 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-2">Programs Offered</h2>
+      <p class="text-lg text-blue-700 font-medium">Shaping Legal Minds with Academic Excellence & Ethical Foundation</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      
+      <!-- Program 1: LL.B. -->
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CProgram%20Curriculum%20-GMU%20-LLB.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-blue-700 hover:shadow-yellow-500/40 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
+        <div class="text-5xl mb-4 text-blue-700"><i class="fas fa-gavel"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">LL.B. (Bachelor of Laws)</h3>
+        <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-blue-700 font-semibold">3 Years</span></p>
+        <p class="text-gray-700 leading-relaxed">
+          A 3-year program for graduates from any discipline such as <strong>B.A., B.Sc., B.Com., B.B.A., B.E.,</strong> or equivalent.
+          The program focuses on core legal principles, case analysis, advocacy, and professional ethics.
+        </p>
+      </a>
+
+      <!-- Program 2: B.B.A., LL.B. -->
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CBBALLB25_26.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-yellow-500 hover:shadow-blue-500/30 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
+        <div class="text-5xl mb-4 text-yellow-500"><i class="fas fa-balance-scale"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.B.A., LL.B.</h3>
+        <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-yellow-600 font-semibold">5 Years</span></p>
+        <p class="text-gray-700 leading-relaxed">
+          A 5-year integrated program for students who have completed <strong>PUC (10+2)</strong> in any stream.
+          Combines legal studies with business administration to prepare graduates for corporate and legal management roles.
+        </p>
+      </a>
+
+      <!-- Program 3: B.Com., LL.B. -->
+      <a href="https://gmu.ac.in/pdfview_assets%5Cdownloadmaterial%5CFaculty%20of%20Legal%20Studies%20and%20Public%20Policy%5CProgram%20Curriculum%20-GMU%20-BCom-LLB.pdf" target="_blank" 
+         class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border-t-8 border-indigo-700 hover:shadow-yellow-500/30 transition duration-300 hover:-translate-y-2 block cursor-pointer no-underline">
+        <div class="text-5xl mb-4 text-indigo-700"><i class="fas fa-scale-balanced"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">B.Com., LL.B.</h3>
+        <p class="text-gray-700 mb-2 font-medium">Duration: <span class="text-indigo-700 font-semibold">5 Years</span></p>
+        <p class="text-gray-700 leading-relaxed">
+          A 5-year integrated course for students who have completed <strong>PUC (10+2)</strong> in any stream.
+          Offers a blend of commerce and law subjects, ideal for careers in corporate law, taxation, and financial regulations.
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+          
+<!-- Faculty Section - GM School of Law -->
+<section id="faculty" class="faculty section bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 py-20">
+  <div class="container max-w-7xl mx-auto px-4 text-center">
+
+    <!-- Section Header -->
+    <div class="section-header mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900">Faculty Profile</h2>
+      <p class="text-lg text-blue-700">Meet our distinguished and experienced faculty members</p>
+    </div>
+
+    <!-- Row 1: Two Faculty Members -->
+    <div class="grid md:grid-cols-2 gap-10 justify-center mb-10">
+
+      <!-- Faculty 1: Shivakumargouda Patil -->
+      <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-blue-700 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty1.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/1e40af/ffffff?text=SP';" 
+             alt="Mr. Shivakumargouda Patil" 
+             class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-blue-700 object-cover">
+        <h3 class="text-xl font-bold text-gray-900">Mr. Shivakumargouda S. Patil</h3>
+        <p class="text-blue-700 font-semibold text-sm mb-1">Director</p>
+        <p class="text-gray-600 text-sm mb-4">LL.M. (Labour Laws), Karnatak University, Dharwad — 1st Rank Holder</p>
+        <p class="text-gray-600 text-sm mb-4">Over 12 years of experience in teaching and legal practice. Researcher and academic leader pursuing Ph.D. at Manipal Law School, Bengaluru.</p>
+        <a href="static/pdf/faculty1.pdf" target="_blank" 
+           class="inline-block bg-blue-700 text-white py-2 px-5 rounded-lg hover:bg-blue-800 transition duration-300 shadow-md">
+          📥 View Profile
+        </a>
+      </div>
+
+      <!-- Faculty 2: Lohitha V -->
+      <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-yellow-500 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty2.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/fbbf24/ffffff?text=LV';" 
+             alt="Mrs. Lohitha V" 
+             class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-yellow-500 object-cover">
+        <h3 class="text-xl font-bold text-gray-900">Ms. Lohitha V</h3>
+        <p class="text-yellow-600 font-semibold text-sm mb-1"></p>
+        <p class="text-gray-600 text-sm mb-4">LL.M. (Business Law), Kuvempu University; MBA (HR), IGNOU</p>
+        <p class="text-gray-600 text-sm mb-4">Practicing Advocate with 25+ years of legal experience and 15 years of teaching. Panel Advocate, Taluk Legal Services Authority.</p>
+        <a href="static/pdf/faculty2.pdf" target="_blank" 
+           class="inline-block bg-yellow-500 text-white py-2 px-5 rounded-lg hover:bg-yellow-600 transition duration-300 shadow-md">
+          📥 View Profile
+        </a>
+      </div>
+    </div>
+
+    <!-- Row 2: Three Faculty Members -->
+    <div class="grid md:grid-cols-3 gap-10 justify-center">
+
+      <!-- Faculty 3: D. S. Sagar -->
+      <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-indigo-700 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty3.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/4338ca/ffffff?text=DS';" 
+             alt="Mr. D. S. Sagar" 
+             class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-indigo-700 object-cover">
+        <h3 class="text-xl font-bold text-gray-900">Mr. D. S. Sagar</h3>
+        <p class="text-indigo-700 font-semibold text-sm mb-1"></p>
+        <p class="text-gray-600 text-sm mb-4">LL.M. (Business & Trade Law), Karnatak University, Dharwad</p>
+        <p class="text-gray-600 text-sm mb-4">Specializes in Contract Law, Administrative Law, and Human Rights. 9 years industry experience and academic coordinator for BBA LL.B. program.</p>
+        <a href="static/pdf/faculty3.pdf" target="_blank" 
+           class="inline-block bg-indigo-700 text-white py-2 px-5 rounded-lg hover:bg-indigo-800 transition duration-300 shadow-md">
+          📥 View Profile
+        </a>
+      </div>
+
+      <!-- Faculty 4: Rakshita G S -->
+      <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-pink-600 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty4.jpeg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/db2777/ffffff?text=RG';" 
+             alt="Ms. Rakshita G S" 
+             class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-pink-600 object-cover">
+        <h3 class="text-xl font-bold text-gray-900">Ms. Rakshita G. S.</h3>
+        <p class="text-pink-700 font-semibold text-sm mb-1"></p>
+        <p class="text-gray-600 text-sm mb-4">LL.M. (Criminal Law), Reva University</p>
+        <p class="text-gray-600 text-sm mb-4">Practicing Advocate with 4+ years of experience. Special interest in Criminal Justice, POCSO, and comparative criminal law.</p>
+        <a href="static/pdf/faculty4.pdf" target="_blank" 
+           class="inline-block bg-pink-600 text-white py-2 px-5 rounded-lg hover:bg-pink-700 transition duration-300 shadow-md">
+          📥 View Profile
+        </a>
+      </div>
+
+      <!-- Faculty 5: Priya Nallur -->
+      <div class="faculty-card bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-t-8 border-green-700 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty5.png" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/166534/ffffff?text=PN';" 
+             alt="Ms. Priya Nallur" 
+             class="w-40 h-40 mx-auto rounded-full mb-4 border-4 border-green-700 object-cover">
+        <h3 class="text-xl font-bold text-gray-900">Ms. Priya V. Nallur</h3>
+        <p class="text-green-700 font-semibold text-sm mb-1"></p>
+        <p class="text-gray-600 text-sm mb-4">LL.M. (IPR & International Trade Law), Christ University</p>
+        <p class="text-gray-600 text-sm mb-4">Specialist in Intellectual Property & Trade Law, with academic experience at NLSIU and Christ University. Former Legal Consultant at Don Bosco Missionary.</p>
+        <a href="static/pdf/faculty5.pdf" target="_blank" 
+           class="inline-block bg-green-700 text-white py-2 px-5 rounded-lg hover:bg-green-800 transition duration-300 shadow-md">
+          📥 View Profile
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <!-- Board of Studies (BOS) Section - GM School of Law -->
+<section id="bos" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Background watermark (Lady Justice faint overlay) -->
+  <div class="absolute inset-0 bg-[url('static/images/law-bg.png')] bg-center bg-contain bg-no-repeat opacity-5"></div>
+
+  <div class="relative container mx-auto px-6 text-center max-w-5xl z-10">
+    <!-- Section Heading -->
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight drop-shadow-sm">
+      Board of Studies (BOS)
+    </h2>
+    <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+      The <span class="text-blue-800 font-semibold">Board of Studies (BOS)</span> of the 
+      <strong>GM School of Law</strong> plays a pivotal role in designing, reviewing, and enhancing 
+      the curriculum to align with modern legal practices, judicial developments, and evolving 
+      socio-economic realities.
+    </p>
+
+    <!-- BOS Card -->
+    <div class="mx-auto max-w-lg bg-white/80 backdrop-blur-xl border border-yellow-100 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 transform hover:-translate-y-2">
+      <div class="flex flex-col items-center text-center">
+        <!-- Professional Icon -->
+        <div class="relative mb-6">
+          <div class="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-40"></div>
+          <img src="https://cdn-icons-png.flaticon.com/512/4149/4149670.png" 
+               alt="BOS Icon" 
+               class="w-20 h-20 relative z-10">
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">BOS Document (Academic Year 2024–25)</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+          Download the officially approved <span class="text-yellow-700 font-medium">curriculum framework</span>, 
+          course structure, and policy guidelines formulated by the 
+          <strong>Board of Studies</strong> for the academic year 
+          <span class="font-semibold text-gray-800">2024–2025</span>.
+        </p>
+
+        <a href="static/pdf/bos.pdf" 
+           target="_blank" 
+           class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold py-2.5 px-6 rounded-full shadow-md hover:shadow-xl hover:from-yellow-600 hover:to-yellow-700 transform hover:-translate-y-1 transition-all duration-300">
+          <i class="fas fa-file-pdf text-white text-lg"></i> Download BOS PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Line -->
+    <div class="mt-12 text-sm text-gray-500">
+      <p>
+        <span class="font-semibold text-gray-700">Last Updated:</span> March 2025 &nbsp;|&nbsp;
+        <span class="font-semibold text-gray-700">Approved by:</span> 
+        <span class="text-blue-800 font-semibold">GMU Academic Council</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+       <!-- Student Corner Section - GM School of Law -->
+<section id="student-corner" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Background watermark -->
+  <div class="absolute inset-0 bg-bg-center bg-contain opacity-5"></div>
+
+  <div class="container max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 drop-shadow-sm">Student Corner</h2>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        A collaborative space fostering academic growth, practical exposure, and leadership among aspiring legal professionals.
+      </p>
+    </div>
+
+    <!-- Corner Grid -->
+    <div class="grid md:grid-cols-3 gap-10">
+      
+      <!-- Legal Research & Peer Learning -->
+      <div class="corner-card bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <img src="static/images/law-research.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/400x200/1e3a8a/ffffff?text=Legal+Research';" 
+             alt="Legal Research" class="rounded-t-2xl h-52 w-full object-cover">
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-semibold text-blue-900 mb-3">📖 Legal Research & Peer Learning</h3>
+          <p class="text-gray-700 text-sm mb-4">Collaborate with peers on legal case studies, moot court preparations, and academic writing to strengthen your analytical and argumentative skills.</p>
+          <a href="https://leap.gmu.ac.in/leap/" target="_blank" class="text-blue-800 font-semibold hover:text-yellow-600 transition duration-300">
+            Explore Activities →
+          </a>
+        </div>
+      </div>
+
+    
+
+      <!-- Study Resources -->
+      <div class="corner-card bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <img src="static/images/study-materials-law.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/400x200/00458B/ffffff?text=Study+Materials';" 
+             alt="Study Material" class="rounded-t-2xl h-52 w-full object-cover">
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-semibold text-blue-900 mb-3">📚 Study Materials & Tutorials</h3>
+          <p class="text-gray-700 text-sm mb-4">Access lecture notes, case law summaries, bare acts, and previous question papers to prepare effectively for internal and external assessments.</p>
+          <a href="https://leap.gmu.ac.in/leap/students/program_study_material.php" target="_blank" class="text-blue-800 font-semibold hover:text-yellow-600 transition duration-300">
+            Get Resources →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <!-- Learning Resources - GM School of Law -->
+<section id="learning-resources" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Watermark -->
+  <div class="absolute inset-0  bg-center bg-contain opacity-5"></div>
+
+  <div class="container max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 drop-shadow-sm">Learning Resources</h2>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Explore our modern facilities and resources that foster practical learning, legal research, and professional development.
+      </p>
+    </div>
+
+    <!-- Resource Grid -->
+    <div class="grid md:grid-cols-3 gap-10">
+      
+      <!-- Moot Court Hall -->
+      <div class="resource-card bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <img src="static/images/moot-court.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/400x220/1e3a8a/ffffff?text=Moot+Court+Hall';" 
+             alt="Moot Court Hall" class="rounded-t-2xl h-56 w-full object-cover">
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-semibold text-blue-900 mb-3">⚖️ Moot Court Hall</h3>
+          <p class="text-gray-700 text-sm">
+            A fully equipped simulated courtroom designed for practical advocacy training, mock trials, and moot court competitions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Digital Law Library -->
+      <div class="resource-card bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <img src="static/images/law-library.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/400x220/f59e0b/ffffff?text=Digital+Law+Library';" 
+             alt="Digital Library" class="rounded-t-2xl h-56 w-full object-cover">
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-semibold text-yellow-700 mb-3">📚 Digital Law Library</h3>
+          <p class="text-gray-700 text-sm">
+            Access to national and international journals, case laws, e-books, and legal databases such as SCC Online and Manupatra.
+          </p>
+        </div>
+      </div>
+
+      <!-- Legal Research Lab -->
+      <div class="resource-card bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <img src="static/images/legal-research.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/400x220/00458B/ffffff?text=Legal+Research+Lab';" 
+             alt="Research Center" class="rounded-t-2xl h-56 w-full object-cover">
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-semibold text-blue-900 mb-3">🔍 Legal Research & Documentation Lab</h3>
+          <p class="text-gray-700 text-sm">
+            A dedicated hub for students and faculty to conduct legal research, analyze judgments, and publish scholarly articles.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- E-Resources -->
+    <div class="mt-12 text-center">
+      <a href="https://leap.gmu.ac.in/leap/students/program_study_material.php" 
+         target="_blank"
+         class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-xl hover:from-yellow-600 hover:to-yellow-700 transform hover:-translate-y-1 transition-all duration-300">
+        🌐 Explore E-Resources
+      </a>
+    </div>
+  </div>
+</section>
+
+
+      <!-- IQAC Section - GM School of Law -->
+<section id="iqac" class="relative py-20 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-100 overflow-hidden">
+  <!-- Background watermark -->
+  <div class="absolute inset-0 bg-center bg-contain opacity-5"></div>
+
+  <div class="container max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 drop-shadow-sm">Internal Quality Assurance Cell (IQAC)</h2>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+        Promoting excellence in legal education through continuous quality improvement, systematic evaluation, and best academic practices.
+      </p>
+    </div>
+
+    <!-- Coordinator Card -->
+    <div class="max-w-2xl mx-auto mb-12 bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-8 flex flex-col sm:flex-row items-center justify-center text-center sm:text-left hover:shadow-2xl transition-all duration-500">
+      <img 
+        src="static/images/faculty/faculty2.jpg" 
+        onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e3a8a/ffffff?text=SP';" 
+        alt="IQAC Coordinator"
+        class="w-28 h-28 rounded-full border-4 border-yellow-500 object-cover mb-4 sm:mb-0 sm:mr-6">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-1">Ms. Lohitha V</h3>
+        <p class="text-yellow-700 font-semibold mb-1">IQAC Coordinator</p>
+        <p class="text-gray-600 text-sm">
+          
+        </p>
+      </div>
+    </div>
+
+    <!-- Document Section -->
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Document 1 -->
+      <div class="bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-file-pdf text-3xl text-blue-800 mr-3"></i>
+          <h4 class="text-xl font-bold text-gray-900">Academic Quality Report 2023-24</h4>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">
+          Comprehensive self-assessment of academic activities, teaching innovations, and institutional best practices.
+        </p>
+        <a href="static/pdf/academic_quality_report.pdf" target="_blank"
+           class="inline-block bg-blue-800 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-900 transition duration-300">
+          📄 Download PDF
+        </a>
+      </div>
+
+      <!-- Document 2 -->
+      <div class="bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-file-alt text-3xl text-yellow-600 mr-3"></i>
+          <h4 class="text-xl font-bold text-gray-900">Curriculum Review Minutes 2024</h4>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">
+          Proceedings of the IQAC and BOS joint review meeting for curriculum updates and course enhancements.
+        </p>
+        <a href="static/pdf/curriculum_review_2024.pdf" target="_blank"
+           class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">
+          📄 Download PDF
+        </a>
+      </div>
+
+      <!-- Document 3 -->
+      <div class="bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-chalkboard-teacher text-3xl text-blue-700 mr-3"></i>
+          <h4 class="text-xl font-bold text-gray-900">Faculty Development Programs</h4>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">
+          Report on FDPs, seminars, and workshops attended by faculty to enhance teaching skills and academic research quality.
+        </p>
+        <a href="static/pdf/fdp_report.pdf" target="_blank"
+           class="inline-block bg-blue-700 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-800 transition duration-300">
+          📄 Download PDF
+        </a>
+      </div>
+
+      <!-- Document 4 -->
+      <div class="bg-white/80 backdrop-blur-lg border border-yellow-200 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-user-check text-3xl text-yellow-600 mr-3"></i>
+          <h4 class="text-xl font-bold text-gray-900">Student Feedback & Action Report</h4>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">
+          Analysis of student feedback and action plans implemented by the department for academic improvement and support.
+        </p>
+        <a href="static/pdf/student_feedback_report.pdf" target="_blank"
+           class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">
+          📄 Download PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Hero Banner - GM School of Law -->
+<header class="relative h-[420px] flex flex-col items-center justify-center text-center text-white overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img src="static/images/law-banner.png"
+         alt="GM School of Law Banner"
+         class="w-full h-full object-cover scale-105 animate-[zoomIn_20s_ease-in-out_infinite_alternate]">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-blue-900/80"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 px-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
+      Excellence in Legal Research & Advocacy
+    </h1>
+    <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+      Advancing legal education, policy research, and judicial innovation through scholarship and collaboration.
+    </p>
+  </div>
+
+  <!-- Gold Accent -->
+  <div class="absolute bottom-0 w-3/4 h-[5px] bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-md"></div>
+
+  <style>
+    @keyframes zoomIn {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.15); }
+    }
+  </style>
+</header>
+
+<!-- Research Section -->
+<section id="research" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-header text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900">Research & Publications</h2>
+      <p class="text-lg text-gray-600">Fostering legal scholarship, policy analysis, and academic excellence.</p>
+    </div>
+    
+    <!-- Research Coordinator -->
+    <div class="flex justify-center mb-12">
+      <div class="flex items-center gap-6 bg-white p-6 rounded-xl shadow-lg border border-yellow-300 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty1.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e3a8a/ffffff?text=SP';" 
+             alt="Mr. Shivakumargouda Patil" 
+             class="w-28 h-28 object-cover rounded-full border-4 border-yellow-500">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">Mr. Shivakumargouda Patil</h3>
+          <p class="text-yellow-700 font-medium">Research Coordinator</p>
+          <p class="text-gray-600 text-sm">Director, GM School of Law, Davanagere</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Areas -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Research Focus Areas</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+       <!-- Card: Alternative Dispute Resolution Laws -->
+<div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-800 hover:shadow-xl transition duration-300">
+  <i class="fas fa-handshake text-4xl text-blue-800 mb-4"></i>
+  <h4 class="text-xl font-bold text-gray-900 mb-2">Alternative Dispute Resolution Laws</h4>
+  <p class="text-gray-600 text-sm">
+    Focuses on arbitration, mediation, and conciliation mechanisms that promote conflict resolution outside traditional court systems.
+  </p>
+</div>
+
+        <!-- Card 2: Human Rights -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-yellow-600 hover:shadow-xl transition duration-300">
+          <i class="fas fa-balance-scale text-4xl text-yellow-600 mb-4"></i>
+          <h4 class="text-xl font-bold text-gray-900 mb-2">Human Rights & Social Justice</h4>
+          <p class="text-gray-600 text-sm">Promoting equality, access to justice, and protection of marginalized communities through legal research.</p>
+        </div>
+        <!-- Card 3: Corporate & Cyber Law -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-green-700 hover:shadow-xl transition duration-300">
+          <i class="fas fa-briefcase text-4xl text-green-700 mb-4"></i>
+          <h4 class="text-xl font-bold text-gray-900 mb-2">Corporate & Cyber Law</h4>
+          <p class="text-gray-600 text-sm">Analyzing corporate governance, cybercrime, and data privacy within digital economies.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Publications Section -->
+<section class="relative py-20 bg-cover bg-center" style="background-image: url('static/images/law-banner.png');">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-blue-900/70 backdrop-blur-sm"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6">
+    <h3 class="text-4xl font-extrabold text-center text-white mb-10 drop-shadow-lg">
+      Recent Publications
+    </h3>
+
+    <div class="space-y-8">
+      <!-- Publication Card 1 -->
+      <div class="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-6 rounded-lg shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-yellow-300 mb-1">
+          “Judicial Review and Constitutional Balance in Contemporary India”
+        </h4>
+        <p class="text-sm italic text-gray-200 mb-1">Indian Journal of Constitutional Law, 2024</p>
+        <p class="text-sm font-medium text-gray-100">Author: <span class="text-white font-semibold">Mr. Shivakumargouda Patil</span></p>
+      </div>
+
+      <!-- Publication Card 2 -->
+      <div class="bg-white/10 backdrop-blur-md border-l-4 border-blue-400 p-6 rounded-lg shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-blue-300 mb-1">
+          “Corporate Responsibility in the Age of Climate Change”
+        </h4>
+        <p class="text-sm italic text-gray-200 mb-1">Journal of Environmental Policy & Law, 2023</p>
+        <p class="text-sm font-medium text-gray-100">Authors: <span class="text-white font-semibold">Prof. Lohitha V</span> & <span class="text-white font-semibold">Dr. D. S. Sagar</span></p>
+      </div>
+
+      <!-- Publication Card 3 -->
+      <div class="bg-white/10 backdrop-blur-md border-l-4 border-green-400 p-6 rounded-lg shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-green-300 mb-1">
+          “Cyber Law and Digital Privacy in India: Emerging Legal Dimensions”
+        </h4>
+        <p class="text-sm italic text-gray-200 mb-1">GMU Law Review, Vol. 5, 2024</p>
+        <p class="text-sm font-medium text-gray-100">Authors: <span class="text-white font-semibold">Research Scholars, GM School of Law</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Student Projects -->
+<section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-header text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900">Student Research & Activities</h2>
+      <p class="text-lg text-gray-600">Empowering students through experiential learning and community engagement.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Project 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-800 transition duration-300 hover:shadow-2xl">
+        <img src="static/images/moot-court.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e3a8a/ffffff?text=Moot+Court';" 
+             alt="Moot Court" 
+             class="rounded-lg mb-4 w-full h-48 object-cover">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">National Moot Court Competition</h3>
+        <p class="text-gray-600 mb-3">Law students represented GM University in national-level competitions showcasing advocacy and research excellence.</p>
+        <p class="text-sm font-semibold text-gray-900">Team: Moot Court Society</p>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-yellow-600 transition duration-300 hover:shadow-2xl">
+        <img src="static/images/legal-aid.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Legal+awareness';" 
+             alt="Legal Awareness Project" 
+             class="rounded-lg mb-4 w-full h-48 object-cover">
+        <h3 class="text-xl font-bold text-yellow-700 mb-2">Community Legal Awareness Program</h3>
+        <p class="text-gray-600 mb-3">Students engaged in outreach programs, offering free legal assistance and spreading awareness on rights and justice.</p>
+        <p class="text-sm font-semibold text-gray-900">Team: Legal Aid Cell</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Admissions Section -->
+<section id="admissions" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-blue-50">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-3">Admission Activities</h2>
+      <p class="text-lg text-gray-600">Join the GM School of Law — Where Knowledge Meets Justice</p>
+    </div>
+
+    <!-- Admission Coordinator -->
+    <div class="flex justify-center mb-16">
+      <div class="flex items-center gap-6 bg-white p-8 rounded-2xl shadow-lg border-t-4 border-yellow-500 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty3.jpg" 
+             onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e3a8a/ffffff?text=SP';" 
+             alt="Mr. Shivakumargouda Patil"
+             class="w-28 h-28 object-cover rounded-full border-4 border-yellow-400 shadow-md">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900">Mr. D. S. Sagar</h3>
+          <p class="text-yellow-700 font-semibold">Admissions Coordinator</p>
+          <p class="text-sm text-gray-600"></p>
+          <p class="text-sm text-gray-600">Email: <a href="mailto:dssagar.flspp@gmu.ac.in" class="text-blue-700 hover:underline">dssagar.flspp@gmu.ac.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admission Programs -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Program 1 -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-blue-800 text-center hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">LL.B. (Bachelor of Law)</h3>
+        <ul class="text-left space-y-2 mb-6 inline-block">
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>3-year program after Graduation (B.A., B.Sc., B.Com., B.B.A., B.E. or equivalent)</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Focus: Legal theory, research, and advocacy skills</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Seats: 60</li>
+        </ul>
+        <a href="https://gmu.ac.in/" target="_blank" class="inline-block bg-yellow-500 text-white font-semibold py-2 px-5 rounded-full hover:bg-yellow-600 transition duration-300 shadow-md">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Program 2 -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-700 text-center hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-bold text-green-700 mb-4">B.B.A., LL.B.</h3>
+        <ul class="text-left space-y-2 mb-6 inline-block">
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>5-year integrated program after 10+2 (any stream)</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Combines management and legal education</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Seats: 120</li>
+        </ul>
+        <a href="https://gmu.ac.in/" target="_blank" class="inline-block bg-yellow-500 text-white font-semibold py-2 px-5 rounded-full hover:bg-yellow-600 transition duration-300 shadow-md">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Program 3 -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-yellow-600 text-center hover:shadow-2xl transition duration-300">
+        <h3 class="text-2xl font-bold text-yellow-700 mb-4">B.Com., LL.B.</h3>
+        <ul class="text-left space-y-2 mb-6 inline-block">
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>5-year integrated program after 10+2 (any stream)</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Emphasis on commerce, taxation, and corporate law</li>
+          <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-2"></i>Seats: 120</li>
+        </ul>
+        <a href="https://gmu.ac.in/" target="_blank" class="inline-block bg-yellow-500 text-white font-semibold py-2 px-5 rounded-full hover:bg-yellow-600 transition duration-300 shadow-md">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+   <!-- Placement Activities Section -->
+<section id="placements" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-blue-50">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-3">Placement & Career Guidance</h2>
+      <p class="text-lg text-gray-600">Empowering our graduates to excel in law, governance, and corporate sectors</p>
+    </div>
+
+    <!-- Placement Coordinator -->
+    <div class="flex justify-center mb-16">
+      <div class="flex items-center gap-6 bg-white p-8 rounded-2xl shadow-lg border-t-4 border-green-600 hover:shadow-2xl transition duration-300">
+        <img src="static/images/faculty/faculty5.png"
+             onerror="this.onerror=null; this.src='https://placehold.co/120x120/14532d/ffffff?text=SP';"
+             alt="Placement Coordinator"
+             class="w-28 h-28 object-cover rounded-full border-4 border-green-500 shadow-md">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900">Ms. Priya Nallur</h3>
+          <p class="text-green-700 font-semibold">Placement Coordinator</p>
+          <p class="text-sm text-gray-600"></p>
+          <p class="text-sm text-gray-600">Email: <a href="mailto:priyavn.flpp@gmu.ac.in" class="text-blue-700 hover:underline">shivakumargoudap@gmu.ac.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placement Preparation -->
+    <div class="mb-12 max-w-sm mx-auto text-center">
+      <a href="https://gmu.ac.in/"
+         target="_blank"
+         class="block w-full bg-gradient-to-r from-blue-800 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-xl">
+        Get Ready for Your Legal Career
+      </a>
+    </div>
+
+    <!-- Placement Highlights -->
+    <div class="placement-stats mb-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 bg-white p-8 rounded-xl shadow-inner border-t-4 border-yellow-500">
+        <div class="stat-item text-center">
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-1">95%</h3>
+          <p class="text-gray-600 font-medium text-sm sm:text-base">Placement Success Rate</p>
+        </div>
+        <div class="stat-item text-center">
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-1">₹8 LPA</h3>
+          <p class="text-gray-600 font-medium text-sm sm:text-base">Highest Package</p>
+        </div>
+        <div class="stat-item text-center">
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-1">₹3.5 LPA</h3>
+          <p class="text-gray-600 font-medium text-sm sm:text-base">Average Package</p>
+        </div>
+        <div class="stat-item text-center">
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-1">30+</h3>
+          <p class="text-gray-600 font-medium text-sm sm:text-base">Partner Law Firms & Organizations</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placement Highlights Descriptive -->
+    <div class="text-center max-w-3xl mx-auto text-gray-700">
+      <p class="text-lg mb-4">
+        Our graduates have secured positions in reputed law firms, corporate legal departments, NGOs, judiciary,
+        and public sector institutions. The department organizes <span class="font-semibold text-blue-700">career guidance sessions,
+        mock interviews, and legal skill development workshops</span> to enhance employability and professional excellence.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- Alumni Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-header">
+                <h2 class="section-title">Department Alumni</h2>
+                <p class="section-subtitle text-gray-600">Our graduates making impact worldwide</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Alumni Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition duration-300 hover:shadow-2xl hover:border-b-4 border-indigo-500">
+                    <img src="static/images/gmu.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Alumni+1';" alt="Alumni" class="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-indigo-100">
+                    <h3 class="text-xl font-bold text-gray-900"></h3>
+                    <p class="text-blue-600 font-medium position"></p>
+                    <p class="text-sm text-gray-500 batch"></p>
+                    <p class="mt-4 italic text-gray-600 testimonial"></p>
+                </div>
+                
+                <!-- Alumni Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition duration-300 hover:shadow-2xl hover:border-b-4 border-green-500">
+                    <img src="static/images/gmu.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/100x100/3b82f6/ffffff?text=Alumni+2';" alt="Alumni" class="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-green-100">
+                    <h3 class="text-xl font-bold text-gray-900">Sanjay M.</h3>
+                    <p class="text-blue-600 font-medium position"></p>
+                    <p class="text-sm text-gray-500 batch"></p>
+                    <p class="mt-4 italic text-gray-600 testimonial"></p>
+                </div>
+                
+               <!-- Alumni Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition duration-300 hover:shadow-2xl hover:border-b-4 border-red-500">
+                    <img src="static/images/gmu.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ef4444/ffffff?text=Alumni+3';" alt="Alumni" class="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-red-100">
+                    <h3 class="text-xl font-bold text-gray-900"></h3>
+                    <p class="text-blue-600 font-medium position"></p>
+                    <p class="text-sm text-gray-500 batch"></p>
+                    <p class="mt-4 italic text-gray-600 testimonial"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Team Section -->
+<section id="team" class="relative bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 py-20">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+
+    <!-- Section Heading -->
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-3 text-yellow-600 drop-shadow-lg">
+      Designed & Developed By
+    </h2>
+    <p class="text-gray-800 text-lg mb-16 font-medium">
+      Meet the developers from the Department of Data Science, GM University
+    </p>
+
+    <!-- Team Cards -->
+    <div class="flex flex-col md:flex-row justify-center gap-12 flex-wrap">
+
+      <!-- Member 1 -->
+      <div class="relative bg-gradient-to-b from-sky-400 to-sky-600 rounded-2xl p-8 w-80 mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transform transition duration-500 border border-sky-300">
+        <img src="static/images/member1.jpg" 
+             alt="Prasanna K B" 
+             class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-yellow-400 shadow-md">
+        <h3 class="text-2xl font-bold text-yellow-400 mb-1">Prasanna K B</h3>
+        <p class="text-gray-100 mb-4 text-sm leading-snug font-medium">
+          Department of Data Science,<br>GM University
+        </p>
+        <!-- Social Links -->
+        <div class="flex justify-center gap-5 mt-3 text-xl">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prasankb6.0@gmail.com"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/prasanna-k-a78229302"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Kalki00001"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="relative bg-gradient-to-b from-sky-400 to-sky-600 rounded-2xl p-8 w-80 mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transform transition duration-500 border border-sky-300">
+        <img src="static/images/member2.jpg" 
+             alt="Srinidhi S Joshi" 
+             class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-yellow-400 shadow-md">
+        <h3 class="text-2xl font-bold text-yellow-400 mb-1">Srinidhi S Joshi</h3>
+        <p class="text-gray-100 mb-4 text-sm leading-snug font-medium">
+          Department of Data Science,<br>GM University
+        </p>
+        <!-- Social Links -->
+        <div class="flex justify-center gap-5 mt-3 text-xl">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=srinidhisjoshi78@gmail.com"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/srinidhi-s-joshi-6a0a14298"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/srinidhipossible-123"
+             target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Glowing Accent Line -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-500"></div>
+</section>
+
+
+<!-- Contact Form -->
+<div class="contact-form bg-gray-700 p-8 rounded-xl shadow-2xl">
+  <h3 class="text-2xl font-bold mb-6 text-white">Send us a Message</h3>
+
+  <form id="contactForm">
+    <div class="mb-4">
+      <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg border-gray-600 bg-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+    </div>
+    <div class="mb-4">
+      <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg border-gray-600 bg-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+    </div>
+    <div class="mb-4">
+      <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full p-3 rounded-lg border-gray-600 bg-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+    </div>
+    <div class="mb-6">
+      <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded-lg border-gray-600 bg-gray-600 text-white focus:ring-blue-500 focus:border-blue-500"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300">Send Message</button>
+  </form>
+</div>
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    // Initialize EmailJS with your public key
+    emailjs.init("FCafLz6qa0cH8Ro2F");
+  })();
+
+  document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Send email using EmailJS
+    emailjs.send("service_91vlbsa", "template_d0fwrij", {
+      from_name: document.getElementById("name").value,
+      from_email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value
+    })
+    .then(function(response) {
+      alert("✅ Message sent successfully!");
+      document.getElementById("contactForm").reset();
+      console.log("SUCCESS", response);
+    }, function(error) {
+      alert("❌ Failed to send message. Please try again later.");
+      console.error("FAILED", error);
+    });
+  });
+</script>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-8">
+                
+                <div class="footer-section">
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">GM University</h3>
+                    <p class="text-sm font-semibold mb-2">Department of Data Science</p>
+                    <p class="text-gray-400 text-sm">Innovating minds, transforming futures through data science education and research.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="text-xl font-bold mb-3">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#research" class="hover:text-blue-400 transition duration-300">Research</a></li>
+                        <li><a href="#projects" class="hover:text-blue-400 transition duration-300">Student Projects</a></li>
+                        <li><a href="#placements" class="hover:text-blue-400 transition duration-300">Placements</a></li>
+                        <li><a href="#ucp" class="hover:text-blue-400 transition duration-300">UCP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="text-xl font-bold mb-3">Contact Info</h3>
+                    <p class="text-sm text-gray-400 mb-2"><i class="fas fa-phone mr-2 text-blue-400"></i> 18001237099</p>
+                    <p class="text-sm text-gray-400 mb-2"><i class="fas fa-envelope mr-2 text-blue-400"></i> datascience@gmu.ac.in</p>
+                    <p class="text-sm text-gray-400"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> Davangere, Karnataka</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="text-xl font-bold mb-3">Follow Us</h3>
+                    <div class="flex space-x-4 text-2xl">
+                        <a href="https://www.facebook.com/p/GM-University-61554085324048/?locale=nl_BE" target="_blank" class="text-gray-400 hover:text-blue-500 transition duration-300" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i><span class="sr-only">Facebook</span></a>
+                        <a href="https://twitter.com/gmunivsbp/status/1080668858564849664" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+                        <a href="https://in.linkedin.com/company/gmu.ac.in" target="_blank" class="text-gray-400 hover:text-blue-600 transition duration-300" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+                        <a href="https://www.instagram.com/gmuniversity_official_set_dvg/#" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-sm text-gray-500">&copy; 2024 GM University - Department of Data Science. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" style="position: fixed; bottom: 100px; right: 25px; width: 350px; background: #fff; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); overflow: hidden; display: none; flex-direction: column; z-index: 9999; font-family: 'Poppins', sans-serif;">
+
+        <!-- Header -->
+    <div id="chatbot-header" style="background: linear-gradient(90deg, #f4b400, #f39c12); color: white; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center;">
+      <img src="https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Mallika" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 10px;">
+      <div>
+        <div style="font-weight: 600; font-size: 1rem;">Mallika</div>
+        <div style="font-size: 0.8rem; opacity: 0.9;">AI Assistant</div>
+      </div>
+    </div>
+    <button id="chatbot-toggle" style="background: transparent; border: none; color: white; font-size: 1.3rem; cursor: pointer;">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chatbot-messages" style="flex-grow: 1; padding: 15px; overflow-y: auto; background: #f9fafb; max-height: 400px;">
+    <div class="bot-message" style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+      <img src="https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="Mallika" style="width: 35px; height: 35px; border-radius: 50%; margin-right: 10px;">
+      <div style="background: white; border-radius: 10px; padding: 10px 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 80%;">
+        <p style="margin: 0; font-size: 0.95rem;">👋 Hello! I'm <b>Mallika</b>, your AI assistant for the Data Science Department.<br>How can I help you today?</p>
+        <div style="margin-top: 10px;">
+          <button class="quick-reply" onclick="quickReply('Programs')" style="margin:3px; background:#f4b400; color:white; border:none; border-radius:20px; padding:6px 12px; cursor:pointer;">Programs</button>
+          <button class="quick-reply" onclick="quickReply('Admissions')" style="margin:3px; background:#f4b400; color:white; border:none; border-radius:20px; padding:6px 12px; cursor:pointer;">Admissions</button>
+          <button class="quick-reply" onclick="quickReply('Faculty')" style="margin:3px; background:#f4b400; color:white; border:none; border-radius:20px; padding:6px 12px; cursor:pointer;">Faculty</button>
+          <button class="quick-reply" onclick="quickReply('Contact')" style="margin:3px; background:#f4b400; color:white; border:none; border-radius:20px; padding:6px 12px; cursor:pointer;">Contact</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div style="display: flex; padding: 10px; border-top: 1px solid #eee; background: #fff;">
+    <input type="text" id="chatbot-input" placeholder="Type your message..." style="flex: 1; border: none; outline: none; font-size: 0.95rem; padding: 8px;">
+    <button id="chatbot-send" style="background: #f4b400; border: none; color: white; padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Floating Chatbot Icon -->
+<div id="chatbot-float" style="position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; cursor: pointer; z-index: 9999;">
+  <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.2);">
+    <img src="https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif" alt="Mallika" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div style="background: #fff; border-radius: 12px; padding: 8px 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); max-width: 220px;">
+    <span style="font-weight: 600; display:block;">Have a question?</span>
+    <span style="font-size: 0.9rem;">Chat with Mallika, our AI Assistant 💬</span>
+  </div>
+</div>
+
+<!-- Scroll To Top Button -->
+<button id="scrollTopBtn" onclick="scrollToQuickAccess()" style="position: fixed; bottom: 170px; right: 70px; background:#f4b400; color:#fff; border:none; border-radius:50%; width:50px; height:50px; font-size:22px; box-shadow:0 6px 15px rgba(0,0,0,0.15); cursor:pointer; display:none; align-items:center; justify-content:center; transition:all 0.3s ease; z-index:999;">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- JS -->
+<script>
+  const chatbot = document.getElementById('chatbot');
+  const chatbotFloat = document.getElementById('chatbot-float');
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatbotInput = document.getElementById('chatbot-input');
+  const chatbotSend = document.getElementById('chatbot-send');
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  // Toggle chatbot open/close
+  chatbotFloat.addEventListener('click', () => {
+    chatbot.style.display = 'flex';
+    chatbotFloat.style.display = 'none';
+  });
+
+  chatbotToggle.addEventListener('click', () => {
+    chatbot.style.display = 'none';
+    chatbotFloat.style.display = 'flex';
+  });
+
+  // Handle user message
+  chatbotSend.addEventListener('click', sendMessage);
+  chatbotInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+  function sendMessage() {
+    const userMsg = chatbotInput.value.trim();
+    if (userMsg === '') return;
+    addMessage(userMsg, 'user');
+    chatbotInput.value = '';
+    setTimeout(() => botReply(userMsg), 600);
+  }
+
+  function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.style.display = 'flex';
+    msgDiv.style.alignItems = 'flex-start';
+    msgDiv.style.marginBottom = '15px';
+
+    if (sender === 'user') {
+      msgDiv.innerHTML = `
+        <div style="background:#f4b400; color:white; border-radius:10px; padding:10px 15px; margin-left:auto; max-width:80%; font-size:0.95rem;">
+          ${text}
+        </div>`;
+    } else {
+      msgDiv.innerHTML = `
+        <img src="https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" style="width:35px; height:35px; border-radius:50%; margin-right:10px;">
+        <div style="background:white; border-radius:10px; padding:10px 15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); max-width:80%; font-size:0.95rem;">
+          ${text}
+        </div>`;
+    }
+
+    chatbotMessages.appendChild(msgDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function botReply(input) {
+    const responses = {
+      'programs': '🎓 We offer B.Tech, M.Tech, and Ph.D. in Data Science, AI, ML, and Big Data!',
+      'admissions': '📝 Admission details: Eligibility - 12th PUC Science, Entrance - KCET / Management, Seats - 120.',
+      'faculty': '👩‍🏫 Visit our Faculty section to learn about our experienced professors and research experts.',
+      'contact': '📞 You can reach us at datascience@gmu.ac.in or +91-8192-123456.'
+    };
+
+    const key = input.toLowerCase().trim();
+    const reply = responses[key] || "🤖 I'm still learning! Please visit our department website for more info.";
+    addMessage(reply, 'bot');
+  }
+
+  function quickReply(text) {
+    chatbotInput.value = text;
+    chatbotInput.focus();
+  }
+
+</script>
+  
+  <!-- 🔹 Scroll to Quick Access Button -->
+<style>
+  .scrollTopBtn {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    background: #1e3a8a; /* Deep law-blue */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .scrollTopBtn:hover {
+    background: #f4b400; /* Gold hover accent */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-4px);
+  }
+
+  .scrollTopBtn i {
+    transition: transform 0.3s ease;
+  }
+
+  .scrollTopBtn:hover i {
+    transform: translateY(-3px);
+  }
+</style>
+
+<!-- Button HTML -->
+<button id="scrollTopBtn" class="scrollTopBtn" title="Go to Quick Access">
+  <i class="fas fa-bolt"></i>
+</button>
+
+<script>
+  // Show/hide button on scroll
+  window.addEventListener("scroll", function () {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    if (window.scrollY > 250) {
+      scrollBtn.style.display = "flex";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  });
+
+  // Smooth scroll to Quick Access
+  function scrollToQuickAccess() {
+    const quickAccess = document.getElementById("quick-access");
+    if (quickAccess) {
+      quickAccess.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
+  // Click event
+  document.getElementById("scrollTopBtn").addEventListener("click", scrollToQuickAccess);
+</script>
+
+</body>
+</html>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // ====== HAMBURGER MENU TOGGLE ======
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('open');
+            });
+        });
+    }
+
+    // ====== SLIDER SECTION ======
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+    const intervalTime = 5000; // 5 seconds per slide
+
+    function showNextSlide() {
+        slides[index].classList.remove('active');
+        slides[index].style.animation = 'none';
+        void slides[index].offsetWidth; // reflow to restart animation
+        slides[index].style.animation = '';
+
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+    }
+
+    if (slides.length > 0 && !slides[0].classList.contains('active')) {
+        slides[0].classList.add('active');
+    }
+
+    setInterval(showNextSlide, intervalTime);
+
+    // ====== GALLERY LIGHTBOX ======
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    window.openLightbox = function(element) {
+        if (lightbox && lightboxImg) {
+            lightbox.style.display = "block";
+            lightboxImg.src = element.src;
+        }
+    };
+
+    window.closeLightbox = function() {
+        if (lightbox) {
+            lightbox.style.display = "none";
+        }
+    };
+
+    if (lightboxImg) {
+        lightboxImg.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    }
+});
+
+</script>
